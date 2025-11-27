@@ -6,12 +6,14 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QAction>
+#include <QMainWindow>
 
 class MenuBar : public QMenuBar
 {
 public:
     MenuBar();
-    MenuBar(QWidget *parent);
+    MenuBar(QMainWindow *parent);
+    ~MenuBar();
 };
 
 #endif // MENUBAR_H

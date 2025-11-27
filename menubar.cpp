@@ -1,7 +1,7 @@
 
 #include "menubar.h"
 
-MenuBar::MenuBar(QWidget *parent) : QMenuBar(parent)
+MenuBar::MenuBar(QMainWindow *parent) : QMenuBar(parent)
 {
     this->setMinimumWidth(800);
     QMenu *screenMenu = this->addMenu("Screens");
@@ -29,5 +29,10 @@ MenuBar::MenuBar(QWidget *parent) : QMenuBar(parent)
     resizeMenu->addAction(sizeLarge);
     resizeMenu->addAction(sizeMedium);
     resizeMenu->addAction(sizeSmall);
+}
+
+MenuBar::~MenuBar()
+{
+
 }
 

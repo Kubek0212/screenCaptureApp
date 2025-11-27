@@ -4,11 +4,22 @@
 
 
 #include <QWidget>
+#include <QVideoWidget>
+#include <QMainWindow>
+#include <QScreenCapture>
+#include <QMediaCaptureSession>
+#include <QApplication>
 
-class ScreenCapturePreview : public QWidget
+class ScreenCapture : public QVideoWidget
 {
 public:
-    ScreenCapturePreview();
+    ScreenCapture();
+    ScreenCapture(QMainWindow *parent);
+    ~ScreenCapture();
+
+private:
+    QMediaCaptureSession *session;
+    QScreenCapture *screenCapture;
 };
 
 #endif // SCREENCAPTURE_H
