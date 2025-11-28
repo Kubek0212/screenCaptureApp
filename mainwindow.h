@@ -4,7 +4,7 @@
 
 
 #include <QMainWindow>
-#include <menubar.h>
+#include <custommenubar.h>
 #include <screencapture.h>
 #include <QVideoWidget>
 #include <QScreenCapture>
@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow();
 private:
-    MenuBar *menuBar;
+    CustomMenuBar *menuBar;
     ScreenCapture *screenCapture;
 };
 

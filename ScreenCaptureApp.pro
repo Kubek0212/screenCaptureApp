@@ -10,9 +10,9 @@ QT += widgets
 QT += multimedia multimediawidgets
 
 SOURCES += \
+        custommenubar.cpp \
         main.cpp \
         mainwindow.cpp \
-        menubar.cpp \
         screencapture.cpp
 
 # Default rules for deployment.
@@ -21,6 +21,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    custommenubar.h \
     mainwindow.h \
-    menubar.h \
     screencapture.h
