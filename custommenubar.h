@@ -10,6 +10,7 @@
 #include <QObject>
 #include <QApplication>
 #include <QScreen>
+#include <screencapture.h>
 
 class CustomMenuBar : public QMenuBar
 {
@@ -20,10 +21,13 @@ public:
     ~CustomMenuBar();
 
     void populateScreenMenu();
+    void setScreenCapture(ScreenCapture *sC);
 private:
     QMenu *screenMenu;
     QMenu *captionMenu;
     QMenu *resizeMenu;
+
+    ScreenCapture *screenCapture;
 
 private slots:
     void testSlot();

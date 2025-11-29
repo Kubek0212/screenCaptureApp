@@ -22,3 +22,17 @@ ScreenCapture::~ScreenCapture()
 {
 
 }
+
+void ScreenCapture::setScreenOnDisplay(QScreen *screen)
+{
+    if (!QApplication::screens().contains(screen))
+    {
+        QMessageBox::warning(this, "Display error", "Display you selected is no loger connected");
+        screenCapture->setActive(false);
+    }
+    else
+    {
+        screenCapture->setScreen(screen);
+        screenCapture->setActive(true);
+    }
+}

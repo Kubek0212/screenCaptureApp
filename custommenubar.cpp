@@ -62,8 +62,14 @@ void CustomMenuBar::populateScreenMenu()
     {
         QString screenName = screen->name();
         QAction *screenAction = new QAction(screenName, this);
+        connect(screenAction, &QAction::triggered, this, [this, screen](){screenCapture->setScreenOnDisplay(screen);});
         screenMenu->addAction(screenAction);
     }
+}
+
+void CustomMenuBar::setScreenCapture(ScreenCapture *sC)
+{
+    screenCapture = sC;
 }
 
 void CustomMenuBar::testSlot()

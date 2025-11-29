@@ -4,6 +4,7 @@
 
 MainWindow::MainWindow() : menuBar(new CustomMenuBar(this)), screenCapture(new ScreenCapture(this))
 {
+    menuBar->setScreenCapture(screenCapture);
     this->resize(500, 200);
 
     setMenuBar(menuBar);
