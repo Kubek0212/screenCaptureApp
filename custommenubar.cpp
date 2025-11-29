@@ -10,14 +10,7 @@ CustomMenuBar::CustomMenuBar(QMainWindow *parent) : QMenuBar(parent)
 {
     this->setMinimumWidth(800);
     screenMenu = this->addMenu("Screens");
-    QList<QScreen*> screens = QApplication::screens();
-    qDebug()<<"detected screens: "<< screens.size();
-    for (QScreen *screen : screens)
-    {
-        QString screenName = screen->name();
-        QAction *screenAction = new QAction(screenName, this);
-        screenMenu->addAction(screenAction);
-    }
+    populateScreenMenu();
 
 
     captionMenu = this->addMenu("Mode");
@@ -45,7 +38,7 @@ CustomMenuBar::CustomMenuBar(QMainWindow *parent) : QMenuBar(parent)
     resizeMenu->addAction(sizeMedium);
     resizeMenu->addAction(sizeSmall);
 
-
+    connect(sizeSmall, &QAction::triggered, this, &CustomMenuBar::testSlot);
 
 }
 
@@ -53,3 +46,28 @@ CustomMenuBar::~CustomMenuBar()
 {
 
 }
+
+void CustomMenuBar::populateScreenMenu()
+{
+    screenMenu->clear();
+    QAction *refreshScreensAction = new QAction("Refresh screens list", this);
+    screenMenu->addAction(refreshScreensAction);
+    connect(refreshScreensAction, &QAction::triggered, this, &CustomMenuBar::populateScreenMenu);
+
+    screenMenu->addSeparator(); //-----------------------
+
+    QList<QScreen*> screens = QApplication::screens();
+    qDebug()<<"detected screens: "<< screens.size();
+    for (QScreen *screen : screens)
+    {
+        QString screenName = screen->name();
+        QAction *screenAction = new QAction(screenName, this);
+        screenMenu->addAction(screenAction);
+    }
+}
+
+void CustomMenuBar::testSlot()
+{
+    qDebug()<<"run test slot";
+}
+

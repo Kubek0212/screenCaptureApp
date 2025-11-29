@@ -18,13 +18,15 @@ public:
     CustomMenuBar();
     CustomMenuBar(QMainWindow *parent);
     ~CustomMenuBar();
+
+    void populateScreenMenu();
 private:
     QMenu *screenMenu;
     QMenu *captionMenu;
     QMenu *resizeMenu;
 
 private slots:
-
+    void testSlot();
 };
 
 #endif // CUSTOMMENUBAR_H
